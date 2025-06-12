@@ -1,0 +1,30 @@
+---
+title: "ISLR (2nd Edition)"
+author: "Justin Tuyisenge"
+date: "June 12, 2025"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+  pdf_document:
+    toc: true
+    toc_depth: 2
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r}
+## Plotting
+x <- rnorm(100)
+y <- rnorm(100)
+
+plot(x, y)
+plot(x, y, 
+     xlab = "x-axis",
+     ylab = "y-axis",
+     main = "X vs Y"
+     )
+```
+
