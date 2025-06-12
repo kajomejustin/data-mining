@@ -1,0 +1,884 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={ISLR (2nd Edition) Exercises - Solutions},
+  pdfauthor={Your Name},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{ISLR (2nd Edition) Exercises - Solutions}
+\author{Your Name}
+\date{June 12, 2025}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ISLR2)      }\CommentTok{\# For datasets}
+\FunctionTok{library}\NormalTok{(dplyr)      }\CommentTok{\# For data manipulation}
+\FunctionTok{library}\NormalTok{(ggplot2)    }\CommentTok{\# For plotting}
+\FunctionTok{library}\NormalTok{(MASS)       }\CommentTok{\# For LDA, QDA}
+\FunctionTok{library}\NormalTok{(caret)      }\CommentTok{\# For data partitioning}
+\FunctionTok{library}\NormalTok{(e1071)      }\CommentTok{\# For Naive Bayes}
+\FunctionTok{library}\NormalTok{(class)      }\CommentTok{\# For KNN}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Chapter 2 - Exercise
+Questions}\label{chapter-2---exercise-questions}
+
+\subsection{Exercise 4}\label{exercise-4}
+
+I collect a set of data (\(n = 100\) observations) containing a single
+predictor and a quantitative response. I then fit a linear regression
+model to the data, as well as a separate cubic regression, i.e.,
+\(Y = \beta_0 + \beta_1X + \beta_2X^2 + \beta_3X^3 + \epsilon\).
+
+\textbf{(a)} Suppose that the true relationship between X and Y is
+linear, i.e.~\(Y = \beta_0 + \beta_1X + \epsilon\). Consider the
+training residual sum of squares (RSS) for the linear regression, and
+also the training RSS for the cubic regression. Would we expect one to
+be lower than the other, would we expect them to be the same, or is
+there not enough information to tell? Justify your answer.
+
+\textbf{Answer:} We would expect the training RSS for the cubic
+regression to be lower than or equal to the training RSS for the linear
+regression.
+
+The cubic regression model is more flexible and includes the linear
+model as a special case (when \(\beta_2 = 0\) and \(\beta_3 = 0\)). When
+fitting a model using least squares, the objective is to minimize the
+RSS on the training data. A more flexible model, by definition, can fit
+the training data at least as well as, and typically better than, a less
+flexible model. Therefore, its training RSS will be smaller or, in very
+specific cases, equal.
+
+\textbf{(b)} Answer (a) using test rather than training RSS.
+
+\textbf{Answer:} We would expect the test RSS for the linear regression
+to be lower than the test RSS for the cubic regression.
+
+Since the true relationship is linear, the linear regression model has
+low bias and captures the underlying structure correctly. The cubic
+model, being more flexible, has higher variance. It will use its
+additional degrees of freedom to fit the random noise in the training
+data, leading to overfitting. This overfitting means it performs well on
+training data but poorly on unseen test data. The linear model, which
+correctly matches the complexity of the true relationship, will likely
+have a lower test RSS due to its lower variance.
+
+\textbf{(c)} Suppose that the true relationship between X and Y is not
+linear, but we don't know how far it is from linear. Consider the
+training RSS for the linear regression, and also the training RSS for
+the cubic regression. Would we expect one to be lower than the other,
+would we expect them to be the same, or is there not enough information
+to tell? Justify your answer.
+
+\textbf{Answer:} We would expect the training RSS for the cubic
+regression to be lower than or equal to the training RSS for the linear
+regression.
+
+This reasoning is the same as in part (a). The cubic regression model is
+more flexible and contains the linear model as a special case.
+Therefore, it will always achieve a training RSS that is less than or
+equal to that of the less flexible linear model, regardless of the true
+non-linear relationship.
+
+\textbf{(d)} Answer (c) using test rather than training RSS.
+
+\textbf{Answer:} In this scenario, there is not enough information to
+tell which model's test RSS would be lower without knowing the true
+degree of non-linearity and the amount of noise in the data.
+
+This is a classic bias-variance trade-off scenario:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Linear Regression:} If the true relationship is non-linear,
+  the linear model will have high bias.
+\item
+  \textbf{Cubic Regression:} The cubic model has the flexibility to
+  capture non-linearity, so it will have lower bias than the linear
+  model. However, it also has higher variance.
+\end{itemize}
+
+Whether the cubic regression's lower bias outweighs its higher variance,
+or vice-versa, depends on the specifics of the true non-linearity and
+noise level. If the non-linearity is mild, the linear model might still
+perform better due to lower variance. If the non-linearity is strong,
+the cubic model would likely perform better despite higher variance due
+to its much lower bias.
+
+\subsection{Exercise 7}\label{exercise-7}
+
+It is claimed in the text that in the case of a regression of Y onto X,
+the \(R^2\) coefficient (3.17) is equal to the square of the correlation
+between X and Y (3.18). Prove that this is indeed the case. For
+simplicity, you can assume that \(\bar{x} = 0\) and \(\bar{y} = 0\).
+
+\textbf{Proof:}
+
+We want to prove that for simple linear regression of \(Y\) onto \(X\),
+\(R^2 = (\text{Cor}(X, Y))^2\), given \(\bar{x} = 0\) and
+\(\bar{y} = 0\).
+
+\textbf{Definitions (with \(\bar{x} = 0, \bar{y} = 0\)):}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\text{TSS} = \sum y_i^2\) (since \(\bar{y} = 0\))
+\item
+  \(\text{Cor}(X,Y) = \frac{\sum x_i y_i}{\sqrt{\sum x_i^2 \sum y_i^2}}\)
+\item
+  Simple Linear Regression:
+  \(\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i\). Given
+  \(\bar{x}=0\), \(\bar{y}=0\), so \(\hat{\beta}_0 = 0\). Thus,
+  \(\hat{Y}_i = \hat{\beta}_1 X_i\).
+\item
+  Slope coefficient: \(\hat{\beta}_1 = \frac{\sum x_i y_i}{\sum x_i^2}\)
+\item
+  \(R^2 = 1 - \frac{\text{RSS}}{\text{TSS}}\)
+\end{itemize}
+
+\textbf{Derivation:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Express RSS:}
+  \[\text{RSS} = \sum (y_i - \hat{y}_i)^2 = \sum (y_i - \hat{\beta}_1 x_i)^2\]
+  \[\text{RSS} = \sum (y_i^2 - 2 \hat{\beta}_1 x_i y_i + \hat{\beta}_1^2 x_i^2)\]
+  \[\text{RSS} = \sum y_i^2 - 2 \hat{\beta}_1 \sum x_i y_i + \hat{\beta}_1^2 \sum x_i^2\]
+\item
+  \textbf{Substitute \(\hat{\beta}_1\) into RSS:}
+  \[\text{RSS} = \sum y_i^2 - 2 \left(\frac{\sum x_i y_i}{\sum x_i^2}\right) \sum x_i y_i + \left(\frac{\sum x_i y_i}{\sum x_i^2}\right)^2 \sum x_i^2\]
+  \[\text{RSS} = \sum y_i^2 - 2 \frac{(\sum x_i y_i)^2}{\sum x_i^2} + \frac{(\sum x_i y_i)^2}{\sum x_i^2}\]
+  \[\text{RSS} = \sum y_i^2 - \frac{(\sum x_i y_i)^2}{\sum x_i^2}\]
+\item
+  \textbf{Substitute RSS into \(R^2\) formula:}
+  \[R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} = 1 - \frac{\sum y_i^2 - \frac{(\sum x_i y_i)^2}{\sum x_i^2}}{\sum y_i^2}\]
+  \[R^2 = 1 - \left(1 - \frac{\frac{(\sum x_i y_i)^2}{\sum x_i^2}}{\sum y_i^2}\right)\]
+  \[R^2 = \frac{\frac{(\sum x_i y_i)^2}{\sum x_i^2}}{\sum y_i^2}\]
+  \[R^2 = \frac{(\sum x_i y_i)^2}{\sum x_i^2 \sum y_i^2}\]
+\item
+  \textbf{Square the correlation coefficient:}
+  \[(\text{Cor}(X,Y))^2 = \left(\frac{\sum x_i y_i}{\sqrt{\sum x_i^2 \sum y_i^2}}\right)^2\]
+  \[= \frac{(\sum x_i y_i)^2}{\sum x_i^2 \sum y_i^2}\]
+\end{enumerate}
+
+Since both expressions are equivalent, \(R^2 = (\text{Cor}(X, Y))^2\) is
+proven for simple linear regression under the assumption \(\bar{x} = 0\)
+and \(\bar{y} = 0\).
+
+\section{Chapter 3 - Exercise
+Questions}\label{chapter-3---exercise-questions}
+
+\subsection{Exercise 4: The Curse of
+Dimensionality}\label{exercise-4-the-curse-of-dimensionality}
+
+When the number of predictors \(p\) is large, there tends to be a
+deterioration in the performance of KNN and other local approaches that
+perform prediction using only observations that are near the test
+observation for which a prediction must be made. This phenomenon is
+known as the curse of dimensionality, and it ties into why
+non-parametric approaches often perform poorly when \(p\) is large. We
+will now investigate this curse.
+
+\textbf{(a)} Suppose we have a set of observations, each with
+measurements on \(p = 1\) feature, \(X\). We assume that \(X\) is
+uniformly (evenly) distributed on \([0,1]\). Associated with each
+observation is a response value. Suppose we wish to predict a test
+observation's response using only observations that are within 10\% of
+the range of \(X\) closest to that test observation. For instance, to
+predict the response for a test observation with \(X = 0.6\), we will
+use observations in the range \([0.55, 0.65]\). On average, what
+fraction of observations will we use to make the prediction?
+
+\textbf{Answer:} The range of \(X\) is \(1-0=1\). A window of 10\% of
+this range is \(0.1\).
+
+For a uniform distribution on \([0,1]\), the fraction of observations in
+an interval of length \(L\) is \(L/(\text{Total Range})\).
+
+The fraction is \(0.1 / 1 = \mathbf{0.1}\).
+
+On average, we will use 10\% of the available observations.
+
+\textbf{(b)} Now suppose we have a set of observations, each with
+measurements on \(p = 2\) features, \(X_1\) and \(X_2\). We assume that
+\((X_1,X_2)\) are uniformly distributed on \([0,1] \times [0,1]\). We
+wish to predict a test observation's response using only observations
+that are within 10\% of the range of \(X_1\) and within 10\% of the
+range of \(X_2\) closest to that test observation. For instance, to
+predict the response for a test observation with \(X_1 = 0.6\) and
+\(X_2 = 0.35\), we will use observations in the range \([0.55,0.65]\)
+for \(X_1\) and in the range \([0.3,0.4]\) for \(X_2\). On average, what
+fraction of the observations will we use to make the prediction?
+
+\textbf{Answer:} The total space is a unit square with area
+\(1 \times 1 = 1\).
+
+The region of interest is a square with side lengths \(0.1\) for \(X_1\)
+and \(0.1\) for \(X_2\).
+
+The volume of this region is \(0.1 \times 0.1 = 0.1^2 = \mathbf{0.01}\).
+
+On average, we will use 1\% of the available observations.
+
+\textbf{(c)} Now suppose we have a set of observations with \(p = 100\)
+features. Again, the observations are uniformly distributed on each
+feature, and again, each feature ranges in value from 0 to 1. We wish to
+predict a test observation's response using observations within 10\% of
+each feature's range closest to that test observation. What fraction of
+the observations will we use to make the prediction?
+
+\textbf{Answer:} The total space is a 100-dimensional hypercube with
+volume \(1^{100} = 1\).
+
+The region of interest is a 100-dimensional hypercube with side lengths
+\(0.1\) in each dimension.
+
+The volume of this region is
+\((0.1)^{100} = \mathbf{1 \times 10^{-100}}\).
+
+On average, we will use an extremely small fraction of the available
+observations.
+
+\textbf{(d)} Using your answers to parts (a)--(c), argue why there is a
+drawback of KNN when \(p\) is large that there are very few training
+observations ``near'' any given test observation.
+
+\textbf{Argument:} As the number of dimensions (\(p\)) increases, the
+fraction of observations that fall within a fixed ``local'' neighborhood
+(defined as 10\% of the range along each axis) around a test observation
+shrinks exponentially:
+
+\begin{itemize}
+\tightlist
+\item
+  For \(p=1\), 10\% of observations are ``near''.
+\item
+  For \(p=2\), only 1\% are ``near''.
+\item
+  For \(p=100\), an extremely small fraction (\(1 \times 10^{-100}\)) is
+  ``near''.
+\end{itemize}
+
+This illustrates the curse of dimensionality: in high-dimensional
+spaces, data points become extremely sparse. For KNN to find enough
+neighbors (e.g., K=5 or 10), the definition of ``near'' must be greatly
+relaxed, meaning the neighborhood radius has to expand to cover a large
+portion of the feature space. When neighbors are no longer truly
+``local,'' their response values may not represent the test
+observation's immediate vicinity, leading to poor prediction performance
+for KNN.
+
+\textbf{(e)} Now suppose we wish to predict for a test observation by
+creating a \(p\)-dimensional hypercube centered around the test
+observation that contains, on average, 10\% of the training
+observations. For \(p = 1, 2\), and \(100\), what is the length of each
+side of the hypercube? Comment on your findings.
+
+\textbf{Answer:} Let \(L\) be the length of each side of the
+\(p\)-dimensional hypercube. Its volume is \(L^p\).
+
+To contain 10\% (0.1) of the observations (uniformly distributed in a
+unit hypercube), the volume must be 0.1.
+
+So, \(L^p = 0.1 \implies L = (0.1)^{1/p}\).
+
+\begin{itemize}
+\tightlist
+\item
+  For \(p = 1\): \(L = (0.1)^{1/1} = \mathbf{0.1}\)
+\item
+  For \(p = 2\): \(L = (0.1)^{1/2} = \sqrt{0.1} \approx \mathbf{0.316}\)
+\item
+  For \(p = 100\): \(L = (0.1)^{1/100} \approx \mathbf{0.977}\)
+\end{itemize}
+
+\textbf{Comment:} This demonstrates that to maintain a constant fraction
+of neighbors (10\%), the side length of the hypercube must increase
+significantly as the number of dimensions grows:
+
+\begin{itemize}
+\tightlist
+\item
+  In 1D, we only need to extend \(0.1\) units in each direction.
+\item
+  In 2D, we need to extend about \(0.316\) units (31.6\% of the range)
+  in each direction.
+\item
+  In 100D, we need to extend about \(0.977\) units (almost 97.7\% of the
+  range) in each direction to capture just 10\% of the data.
+\end{itemize}
+
+This shows that in high dimensions, the ``local'' neighborhood needed to
+find enough neighbors becomes so large that it spans nearly the entire
+feature space. The observations within this ``neighborhood'' are no
+longer truly ``near'' or ``similar'' to the test point, undermining the
+core principle of local methods like KNN.
+
+\subsection{Exercise 9: Odds}\label{exercise-9-odds}
+
+This problem deals with odds.
+
+\textbf{(a)} On average, what fraction of people with an odds of 0.37 of
+defaulting on their credit card payment will actually default?
+
+\textbf{Answer:} Odds are defined as \(\frac{p}{1-p}\), where \(p\) is
+the probability.
+
+Given Odds = 0.37: \[0.37 = \frac{p}{1-p}\] \[0.37(1-p) = p\]
+\[0.37 - 0.37p = p\] \[0.37 = 1.37p\]
+\[p = \frac{0.37}{1.37} \approx \mathbf{0.270}\]
+
+Approximately 27.0\% of people will default.
+
+\textbf{(b)} Suppose an individual has a 16\% probability of defaulting
+on their credit card payment. What are the odds that they will default?
+
+\textbf{Answer:} Given probability \(p = 0.16\).
+
+Odds =
+\(\frac{p}{1-p} = \frac{0.16}{1 - 0.16} = \frac{0.16}{0.84} \approx \mathbf{0.190}\)
+
+The odds that they will default are approximately 0.190.
+
+\subsection{Exercise 14: Predicting Gas
+Mileage}\label{exercise-14-predicting-gas-mileage}
+
+In this problem, you will create a model to predict whether a car gets
+high or low gas mileage based on the Auto dataset.
+
+\textbf{(a)} Create a binary variable, mpg01, that contains a 1 if mpg
+is above its median, and a 0 if mpg is below its median.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load Auto dataset}
+\FunctionTok{data}\NormalTok{(Auto)}
+
+\CommentTok{\# Convert horsepower to numeric (it might be a factor)}
+\NormalTok{Auto}\SpecialCharTok{$}\NormalTok{horsepower }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{as.character}\NormalTok{(Auto}\SpecialCharTok{$}\NormalTok{horsepower))}
+
+\CommentTok{\# Remove rows with missing values}
+\NormalTok{Auto\_data }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(Auto)}
+
+\CommentTok{\# Calculate median MPG}
+\NormalTok{median\_mpg }\OtherTok{\textless{}{-}} \FunctionTok{median}\NormalTok{(Auto\_data}\SpecialCharTok{$}\NormalTok{mpg)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Median MPG:"}\NormalTok{, median\_mpg, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Median MPG: 22.75
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create binary variable mpg01}
+\NormalTok{Auto\_data }\OtherTok{\textless{}{-}}\NormalTok{ Auto\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{mpg01 =} \FunctionTok{ifelse}\NormalTok{(mpg }\SpecialCharTok{\textgreater{}}\NormalTok{ median\_mpg, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{))}
+
+\CommentTok{\# Display first few rows and summary}
+\FunctionTok{head}\NormalTok{(Auto\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   mpg cylinders displacement horsepower weight acceleration year origin
+## 1  18         8          307        130   3504         12.0   70      1
+## 2  15         8          350        165   3693         11.5   70      1
+## 3  18         8          318        150   3436         11.0   70      1
+## 4  16         8          304        150   3433         12.0   70      1
+## 5  17         8          302        140   3449         10.5   70      1
+## 6  15         8          429        198   4341         10.0   70      1
+##                        name mpg01
+## 1 chevrolet chevelle malibu     0
+## 2         buick skylark 320     0
+## 3        plymouth satellite     0
+## 4             amc rebel sst     0
+## 5               ford torino     0
+## 6          ford galaxie 500     0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(Auto\_data}\SpecialCharTok{$}\NormalTok{mpg01)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##   0   1 
+## 196 196
+\end{verbatim}
+
+\textbf{(b)} Explore the data visually to investigate the association
+between mpg01 and other features. Which features seem most likely to be
+useful in predicting mpg01? Scatterplots and boxplots may help answer
+this question. Describe your observations.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create boxplots for continuous variables}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\FunctionTok{boxplot}\NormalTok{(horsepower }\SpecialCharTok{\textasciitilde{}}\NormalTok{ mpg01, }\AttributeTok{data =}\NormalTok{ Auto\_data, }\AttributeTok{main =} \StringTok{"Horsepower vs. mpg01"}\NormalTok{, }
+        \AttributeTok{xlab =} \StringTok{"mpg01 (0=Low, 1=High)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Horsepower"}\NormalTok{)}
+\FunctionTok{boxplot}\NormalTok{(weight }\SpecialCharTok{\textasciitilde{}}\NormalTok{ mpg01, }\AttributeTok{data =}\NormalTok{ Auto\_data, }\AttributeTok{main =} \StringTok{"Weight vs. mpg01"}\NormalTok{,}
+        \AttributeTok{xlab =} \StringTok{"mpg01 (0=Low, 1=High)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Weight"}\NormalTok{)}
+\FunctionTok{boxplot}\NormalTok{(displacement }\SpecialCharTok{\textasciitilde{}}\NormalTok{ mpg01, }\AttributeTok{data =}\NormalTok{ Auto\_data, }\AttributeTok{main =} \StringTok{"Displacement vs. mpg01"}\NormalTok{,}
+        \AttributeTok{xlab =} \StringTok{"mpg01 (0=Low, 1=High)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Displacement"}\NormalTok{)}
+\FunctionTok{boxplot}\NormalTok{(cylinders }\SpecialCharTok{\textasciitilde{}}\NormalTok{ mpg01, }\AttributeTok{data =}\NormalTok{ Auto\_data, }\AttributeTok{main =} \StringTok{"Cylinders vs. mpg01"}\NormalTok{,}
+        \AttributeTok{xlab =} \StringTok{"mpg01 (0=Low, 1=High)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Cylinders"}\NormalTok{)}
+\FunctionTok{boxplot}\NormalTok{(acceleration }\SpecialCharTok{\textasciitilde{}}\NormalTok{ mpg01, }\AttributeTok{data =}\NormalTok{ Auto\_data, }\AttributeTok{main =} \StringTok{"Acceleration vs. mpg01"}\NormalTok{,}
+        \AttributeTok{xlab =} \StringTok{"mpg01 (0=Low, 1=High)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Acceleration"}\NormalTok{)}
+\FunctionTok{boxplot}\NormalTok{(year }\SpecialCharTok{\textasciitilde{}}\NormalTok{ mpg01, }\AttributeTok{data =}\NormalTok{ Auto\_data, }\AttributeTok{main =} \StringTok{"Year vs. mpg01"}\NormalTok{,}
+        \AttributeTok{xlab =} \StringTok{"mpg01 (0=Low, 1=High)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Year"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{ISLR-Exercises_files/figure-latex/exploratory-plots-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+
+\CommentTok{\# Create factor for origin and plot}
+\NormalTok{Auto\_data}\SpecialCharTok{$}\NormalTok{origin\_factor }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(Auto\_data}\SpecialCharTok{$}\NormalTok{origin, }
+                                  \AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{),}
+                                  \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"American"}\NormalTok{, }\StringTok{"European"}\NormalTok{, }\StringTok{"Japanese"}\NormalTok{))}
+
+\CommentTok{\# Origin vs mpg01 plot}
+\FunctionTok{ggplot}\NormalTok{(Auto\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ origin\_factor, }\AttributeTok{fill =} \FunctionTok{factor}\NormalTok{(mpg01))) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{position =} \StringTok{"fill"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Origin vs. mpg01"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Origin"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Proportion"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{scale\_fill\_discrete}\NormalTok{(}\AttributeTok{name =} \StringTok{"mpg01"}\NormalTok{, }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Low"}\NormalTok{, }\StringTok{"High"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{ISLR-Exercises_files/figure-latex/exploratory-plots-2} \end{center}
+
+\textbf{Findings:} - \textbf{horsepower}, \textbf{weight},
+\textbf{displacement}, and \textbf{cylinders} show strong negative
+associations (higher values of these predictors are linked to low
+mpg01). - \textbf{year} shows a strong positive association (newer cars
+tend to have high mpg01). - \textbf{origin} also shows clear
+differences, with Japanese cars having a higher proportion of high
+mpg01. - \textbf{acceleration} appears less strongly associated.
+
+\textbf{Selected Predictors:} horsepower, weight, displacement,
+cylinders, year, and origin.
+
+\textbf{(c)} Split the data into training and test sets.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{42}\NormalTok{)}
+\NormalTok{train\_index }\OtherTok{\textless{}{-}} \FunctionTok{createDataPartition}\NormalTok{(Auto\_data}\SpecialCharTok{$}\NormalTok{mpg01, }\AttributeTok{p =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{list =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{train\_data }\OtherTok{\textless{}{-}}\NormalTok{ Auto\_data[train\_index, ]}
+\NormalTok{test\_data }\OtherTok{\textless{}{-}}\NormalTok{ Auto\_data[}\SpecialCharTok{{-}}\NormalTok{train\_index, ]}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Training set dimensions:"}\NormalTok{, }\FunctionTok{dim}\NormalTok{(train\_data), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Training set dimensions: 276 11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Test set dimensions:"}\NormalTok{, }\FunctionTok{dim}\NormalTok{(test\_data), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Test set dimensions: 116 11
+\end{verbatim}
+
+\textbf{(d)} Perform LDA on the training data to predict mpg01 using the
+predictors that seemed most associated with mpg01 in (b). What is the
+test error of the model obtained?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Ensure origin\_factor is properly defined in both datasets}
+\NormalTok{train\_data}\SpecialCharTok{$}\NormalTok{origin\_factor }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(train\_data}\SpecialCharTok{$}\NormalTok{origin)}
+\NormalTok{test\_data}\SpecialCharTok{$}\NormalTok{origin\_factor }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(test\_data}\SpecialCharTok{$}\NormalTok{origin)}
+
+\CommentTok{\# Fit LDA model}
+\NormalTok{lda\_model }\OtherTok{\textless{}{-}} \FunctionTok{lda}\NormalTok{(mpg01 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ horsepower }\SpecialCharTok{+}\NormalTok{ weight }\SpecialCharTok{+}\NormalTok{ displacement }\SpecialCharTok{+}\NormalTok{ cylinders }\SpecialCharTok{+}\NormalTok{ year }\SpecialCharTok{+}\NormalTok{ origin\_factor, }
+                 \AttributeTok{data =}\NormalTok{ train\_data)}
+
+\CommentTok{\# Make predictions}
+\NormalTok{lda\_pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(lda\_model, }\AttributeTok{newdata =}\NormalTok{ test\_data)}
+\NormalTok{lda\_class }\OtherTok{\textless{}{-}}\NormalTok{ lda\_pred}\SpecialCharTok{$}\NormalTok{class}
+
+\CommentTok{\# Confusion matrix}
+\NormalTok{confusion\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(}\AttributeTok{Predicted =}\NormalTok{ lda\_class, }\AttributeTok{Actual =}\NormalTok{ test\_data}\SpecialCharTok{$}\NormalTok{mpg01)}
+\FunctionTok{print}\NormalTok{(confusion\_matrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          Actual
+## Predicted  0  1
+##         0 48  1
+##         1 10 57
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate test error}
+\NormalTok{lda\_error }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(lda\_class }\SpecialCharTok{!=}\NormalTok{ test\_data}\SpecialCharTok{$}\NormalTok{mpg01)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"LDA Test Error:"}\NormalTok{, }\FunctionTok{round}\NormalTok{(lda\_error, }\DecValTok{4}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## LDA Test Error: 0.0948
+\end{verbatim}
+
+\textbf{(e)} Perform QDA on the training data to predict mpg01 using the
+predictors that seemed most associated with mpg01 in (b). What is the
+test error rate of the model obtained?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Fit QDA model}
+\NormalTok{qda\_model }\OtherTok{\textless{}{-}} \FunctionTok{qda}\NormalTok{(mpg01 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ horsepower }\SpecialCharTok{+}\NormalTok{ weight }\SpecialCharTok{+}\NormalTok{ displacement }\SpecialCharTok{+}\NormalTok{ cylinders }\SpecialCharTok{+}\NormalTok{ year }\SpecialCharTok{+}\NormalTok{ origin\_factor, }
+                 \AttributeTok{data =}\NormalTok{ train\_data)}
+
+\CommentTok{\# Make predictions}
+\NormalTok{qda\_pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(qda\_model, }\AttributeTok{newdata =}\NormalTok{ test\_data)}
+\NormalTok{qda\_class }\OtherTok{\textless{}{-}}\NormalTok{ qda\_pred}\SpecialCharTok{$}\NormalTok{class}
+
+\CommentTok{\# Confusion matrix}
+\NormalTok{confusion\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(}\AttributeTok{Predicted =}\NormalTok{ qda\_class, }\AttributeTok{Actual =}\NormalTok{ test\_data}\SpecialCharTok{$}\NormalTok{mpg01)}
+\FunctionTok{print}\NormalTok{(confusion\_matrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          Actual
+## Predicted  0  1
+##         0 49  4
+##         1  9 54
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate test error}
+\NormalTok{qda\_error }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(qda\_class }\SpecialCharTok{!=}\NormalTok{ test\_data}\SpecialCharTok{$}\NormalTok{mpg01)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"QDA Test Error:"}\NormalTok{, }\FunctionTok{round}\NormalTok{(qda\_error, }\DecValTok{4}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## QDA Test Error: 0.1121
+\end{verbatim}
+
+\textbf{(f)} Perform logistic regression on the training data to predict
+mpg01 using the predictors that seemed most associated with mpg01 in
+(b). What is the test error rate of the model obtained?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Fit logistic regression model}
+\NormalTok{logistic\_model }\OtherTok{\textless{}{-}} \FunctionTok{glm}\NormalTok{(mpg01 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ horsepower }\SpecialCharTok{+}\NormalTok{ weight }\SpecialCharTok{+}\NormalTok{ displacement }\SpecialCharTok{+}\NormalTok{ cylinders }\SpecialCharTok{+}\NormalTok{ year }\SpecialCharTok{+}\NormalTok{ origin\_factor, }
+                      \AttributeTok{data =}\NormalTok{ train\_data, }\AttributeTok{family =}\NormalTok{ binomial)}
+
+\CommentTok{\# Make predictions}
+\NormalTok{logistic\_probs }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(logistic\_model, }\AttributeTok{newdata =}\NormalTok{ test\_data, }\AttributeTok{type =} \StringTok{"response"}\NormalTok{)}
+\NormalTok{logistic\_class }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(logistic\_probs }\SpecialCharTok{\textgreater{}} \FloatTok{0.5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+
+\CommentTok{\# Confusion matrix}
+\NormalTok{confusion\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(}\AttributeTok{Predicted =}\NormalTok{ logistic\_class, }\AttributeTok{Actual =}\NormalTok{ test\_data}\SpecialCharTok{$}\NormalTok{mpg01)}
+\FunctionTok{print}\NormalTok{(confusion\_matrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          Actual
+## Predicted  0  1
+##         0 49  3
+##         1  9 55
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate test error}
+\NormalTok{logistic\_error }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(logistic\_class }\SpecialCharTok{!=}\NormalTok{ test\_data}\SpecialCharTok{$}\NormalTok{mpg01)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Logistic Regression Test Error:"}\NormalTok{, }\FunctionTok{round}\NormalTok{(logistic\_error, }\DecValTok{4}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Logistic Regression Test Error: 0.1034
+\end{verbatim}
+
+\textbf{(g)} Perform Naive Bayes on the training data to predict mpg01
+using the predictors that seemed most associated with mpg01 in (b). What
+is the test error rate of the model obtained?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Fit Naive Bayes model}
+\NormalTok{naive\_bayes\_model }\OtherTok{\textless{}{-}} \FunctionTok{naiveBayes}\NormalTok{(mpg01 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ horsepower }\SpecialCharTok{+}\NormalTok{ weight }\SpecialCharTok{+}\NormalTok{ displacement }\SpecialCharTok{+}\NormalTok{ cylinders }\SpecialCharTok{+}\NormalTok{ year }\SpecialCharTok{+}\NormalTok{ origin\_factor, }
+                                \AttributeTok{data =}\NormalTok{ train\_data)}
+
+\CommentTok{\# Make predictions}
+\NormalTok{naive\_bayes\_class }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(naive\_bayes\_model, }\AttributeTok{newdata =}\NormalTok{ test\_data, }\AttributeTok{type =} \StringTok{"class"}\NormalTok{)}
+
+\CommentTok{\# Confusion matrix}
+\NormalTok{confusion\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(}\AttributeTok{Predicted =}\NormalTok{ naive\_bayes\_class, }\AttributeTok{Actual =}\NormalTok{ test\_data}\SpecialCharTok{$}\NormalTok{mpg01)}
+\FunctionTok{print}\NormalTok{(confusion\_matrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          Actual
+## Predicted  0  1
+##         0 49  3
+##         1  9 55
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate test error}
+\NormalTok{naive\_bayes\_error }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(naive\_bayes\_class }\SpecialCharTok{!=}\NormalTok{ test\_data}\SpecialCharTok{$}\NormalTok{mpg01)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Naive Bayes Test Error:"}\NormalTok{, }\FunctionTok{round}\NormalTok{(naive\_bayes\_error, }\DecValTok{4}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Naive Bayes Test Error: 0.1034
+\end{verbatim}
+
+\textbf{(h)} Perform KNN on the training data, with several values of K,
+to predict mpg01 using only the predictors that seemed most associated
+with mpg01 in (b). What test errors do you get? Which value of K seems
+to perform best on this data set?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Define the selected predictors (excluding origin\_factor for simplicity with KNN)}
+\NormalTok{selected\_predictors }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"horsepower"}\NormalTok{, }\StringTok{"weight"}\NormalTok{, }\StringTok{"displacement"}\NormalTok{, }\StringTok{"cylinders"}\NormalTok{, }\StringTok{"year"}\NormalTok{)}
+
+\CommentTok{\# Extract predictor matrices}
+\NormalTok{train\_predictors }\OtherTok{\textless{}{-}}\NormalTok{ train\_data[, selected\_predictors]}
+\NormalTok{test\_predictors }\OtherTok{\textless{}{-}}\NormalTok{ test\_data[, selected\_predictors]}
+
+\CommentTok{\# Scale the predictors}
+\NormalTok{train\_scaled }\OtherTok{\textless{}{-}} \FunctionTok{scale}\NormalTok{(train\_predictors)}
+\NormalTok{test\_scaled }\OtherTok{\textless{}{-}} \FunctionTok{scale}\NormalTok{(test\_predictors, }
+                     \AttributeTok{center =} \FunctionTok{attr}\NormalTok{(train\_scaled, }\StringTok{"scaled:center"}\NormalTok{), }
+                     \AttributeTok{scale =} \FunctionTok{attr}\NormalTok{(train\_scaled, }\StringTok{"scaled:scale"}\NormalTok{))}
+
+\CommentTok{\# Test different values of K}
+\NormalTok{k\_values }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{25}\NormalTok{)}
+\NormalTok{knn\_errors }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(}\FunctionTok{length}\NormalTok{(k\_values))}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(k\_values)) \{}
+\NormalTok{  k }\OtherTok{\textless{}{-}}\NormalTok{ k\_values[i]}
+\NormalTok{  knn\_pred }\OtherTok{\textless{}{-}} \FunctionTok{knn}\NormalTok{(}\AttributeTok{train =}\NormalTok{ train\_scaled, }
+                  \AttributeTok{test =}\NormalTok{ test\_scaled, }
+                  \AttributeTok{cl =}\NormalTok{ train\_data}\SpecialCharTok{$}\NormalTok{mpg01, }
+                  \AttributeTok{k =}\NormalTok{ k)}
+\NormalTok{  knn\_errors[i] }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(knn\_pred }\SpecialCharTok{!=}\NormalTok{ test\_data}\SpecialCharTok{$}\NormalTok{mpg01)}
+\NormalTok{\}}
+
+\CommentTok{\# Display results}
+\NormalTok{results\_df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{K =}\NormalTok{ k\_values, }\AttributeTok{Test\_Error =} \FunctionTok{round}\NormalTok{(knn\_errors, }\DecValTok{4}\NormalTok{))}
+\FunctionTok{print}\NormalTok{(results\_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    K Test_Error
+## 1  1     0.0431
+## 2  3     0.0862
+## 3  5     0.0690
+## 4 10     0.0776
+## 5 15     0.0948
+## 6 20     0.0948
+## 7 25     0.0948
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Find best K}
+\NormalTok{best\_k }\OtherTok{\textless{}{-}}\NormalTok{ k\_values[}\FunctionTok{which.min}\NormalTok{(knn\_errors)]}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Best K:"}\NormalTok{, best\_k, }\StringTok{"with test error:"}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\FunctionTok{min}\NormalTok{(knn\_errors), }\DecValTok{4}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Best K: 1 with test error: 0.0431
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot the results}
+\FunctionTok{ggplot}\NormalTok{(results\_df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ K, }\AttributeTok{y =}\NormalTok{ Test\_Error)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"KNN Test Error vs. K"}\NormalTok{, }\AttributeTok{x =} \StringTok{"K"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Test Error"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{ISLR-Exercises_files/figure-latex/knn-model-1} \end{center}
+
+\subsection{Summary of Results}\label{summary-of-results}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create summary table of all model performances}
+\NormalTok{model\_results }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Model =} \FunctionTok{c}\NormalTok{(}\StringTok{"LDA"}\NormalTok{, }\StringTok{"QDA"}\NormalTok{, }\StringTok{"Logistic Regression"}\NormalTok{, }\StringTok{"Naive Bayes"}\NormalTok{, }\FunctionTok{paste}\NormalTok{(}\StringTok{"KNN (K="}\NormalTok{, best\_k, }\StringTok{")"}\NormalTok{, }\AttributeTok{sep=}\StringTok{""}\NormalTok{)),}
+  \AttributeTok{Test\_Error =} \FunctionTok{c}\NormalTok{(lda\_error, qda\_error, logistic\_error, naive\_bayes\_error, }\FunctionTok{min}\NormalTok{(knn\_errors))}
+\NormalTok{)}
+
+\NormalTok{model\_results}\SpecialCharTok{$}\NormalTok{Test\_Error }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(model\_results}\SpecialCharTok{$}\NormalTok{Test\_Error, }\DecValTok{4}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(model\_results)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 Model Test_Error
+## 1                 LDA     0.0948
+## 2                 QDA     0.1121
+## 3 Logistic Regression     0.1034
+## 4         Naive Bayes     0.1034
+## 5           KNN (K=1)     0.0431
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Find best performing model}
+\NormalTok{best\_model }\OtherTok{\textless{}{-}}\NormalTok{ model\_results[}\FunctionTok{which.min}\NormalTok{(model\_results}\SpecialCharTok{$}\NormalTok{Test\_Error), ]}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Best performing model:"}\NormalTok{, best\_model}\SpecialCharTok{$}\NormalTok{Model, }\StringTok{"with test error:"}\NormalTok{, best\_model}\SpecialCharTok{$}\NormalTok{Test\_Error, }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Best performing model: KNN (K=1) with test error: 0.0431
+\end{verbatim}
+
+The analysis shows the performance of different classification methods
+on the Auto dataset for predicting high vs.~low gas mileage. The results
+demonstrate the trade-offs between different approaches and how model
+complexity affects performance on this particular dataset.
+
+\end{document}
