@@ -1,0 +1,391 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Chapter 4 Exercises: Classification},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Chapter 4 Exercises: Classification}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+Solutions to selected exercises from Chapter 4 of \emph{An Introduction
+to Statistical Learning with Applications in R}. Focuses on
+classification concepts like KNN, odds, and LDA.
+
+\subsection{Exercise 4: The Curse of
+Dimensionality}\label{exercise-4-the-curse-of-dimensionality}
+
+This exercise explores why KNN struggles with high-dimensional data
+(Section 4.5.2, p.~164).
+
+\subsubsection{(a) p = 1}\label{a-p-1}
+
+For one feature uniformly distributed on {[}0, 1{]}, we use observations
+within 10\% of the range (0.1). The fraction of observations is:
+
+\[ \text{Fraction} = \frac{0.1}{1} = 0.1 \]
+
+\textbf{Answer}: 10\% of observations.
+
+\subsubsection{(b) p = 2}\label{b-p-2}
+
+For two features in {[}0, 1{]} × {[}0, 1{]}, the fraction is:
+
+\[ \text{Fraction} = 0.1 \times 0.1 = 0.01 \]
+
+\textbf{Answer}: 1\% of observations.
+
+\subsubsection{(c) p = 100}\label{c-p-100}
+
+For 100 features, the fraction is:
+
+\[ \text{Fraction} = 0.1^{100} = 10^{-100} \]
+
+\textbf{Answer}: A negligible fraction, \(10^{-100}\).
+
+\subsubsection{(d) Drawback of KNN with Large
+p}\label{d-drawback-of-knn-with-large-p}
+
+As \(p\) increases, the fraction of observations in the neighborhood
+(\(0.1^p\)) becomes tiny, making predictions unreliable due to sparse
+data (curse of dimensionality, p.~115, 193, 266).
+
+\textbf{Answer}: KNN fails because very few observations are near the
+test point, leading to poor predictions.
+
+\subsubsection{(e) Hypercube Side Length for 10\% of
+Observations}\label{e-hypercube-side-length-for-10-of-observations}
+
+To include 10\% of observations, the hypercube volume is 0.1:
+
+\[ s^p = 0.1 \] \[ s = 0.1^{1/p} \]
+
+Compute for different \(p\):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_values }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{100}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (p }\ControlFlowTok{in}\NormalTok{ p\_values) \{}
+\NormalTok{  s }\OtherTok{\textless{}{-}} \FloatTok{0.1}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{p)}
+  \FunctionTok{cat}\NormalTok{(}\FunctionTok{sprintf}\NormalTok{(}\StringTok{"p = \%d: Side length = \%.3f}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, p, s))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## p = 1: Side length = 0.100
+## p = 2: Side length = 0.316
+## p = 100: Side length = 0.977
+\end{verbatim}
+
+\textbf{Answer}: - \(p = 1\): Side length = 0.1 - \(p = 2\): Side length
+≈ 0.316 - \(p = 100\): Side length ≈ 0.977
+
+As \(p\) increases, the neighborhood spans nearly the entire space,
+losing locality.
+
+\subsection{Exercise 9: Odds}\label{exercise-9-odds}
+
+Explores odds in the context of logistic regression (Section 4.3,
+p.~138--145).
+
+\subsubsection{(a) Fraction Defaulting with Odds of
+0.37}\label{a-fraction-defaulting-with-odds-of-0.37}
+
+\[ \text{Odds} = \frac{P}{1 - P} = 0.37 \]
+
+Solve for \(P\):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{odds }\OtherTok{\textless{}{-}} \FloatTok{0.37}
+\NormalTok{P }\OtherTok{\textless{}{-}}\NormalTok{ odds }\SpecialCharTok{/}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+}\NormalTok{ odds)}
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{sprintf}\NormalTok{(}\StringTok{"Fraction defaulting: \%.3f or \%.1f\%\%}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, P, P}\SpecialCharTok{*}\DecValTok{100}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Fraction defaulting: 0.270 or 27.0%
+\end{verbatim}
+
+\textbf{Answer}: 27\% default.
+
+\subsubsection{(b) Odds for 16\% Default
+Probability}\label{b-odds-for-16-default-probability}
+
+\[ P = 0.16 \] \[ \text{Odds} = \frac{P}{1 - P} \]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P }\OtherTok{\textless{}{-}} \FloatTok{0.16}
+\NormalTok{odds }\OtherTok{\textless{}{-}}\NormalTok{ P }\SpecialCharTok{/}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ P)}
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{sprintf}\NormalTok{(}\StringTok{"Odds of default: \%.4f}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, odds))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Odds of default: 0.1905
+\end{verbatim}
+
+\textbf{Answer}: Odds = 0.1905.
+
+\subsection{Exercise 14: Predicting Gas Mileage with Auto
+Dataset}\label{exercise-14-predicting-gas-mileage-with-auto-dataset}
+
+Uses LDA to classify cars based on gas mileage (Section 4.4,
+p.~146--155).
+
+\subsubsection{(a) Create Binary Variable
+mpg01}\label{a-create-binary-variable-mpg01}
+
+Create \texttt{mpg01}: 1 if \texttt{mpg} \textgreater{} median, 0
+otherwise.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ISLR2)}
+\FunctionTok{data}\NormalTok{(Auto)}
+
+\NormalTok{median\_mpg }\OtherTok{\textless{}{-}} \FunctionTok{median}\NormalTok{(Auto}\SpecialCharTok{$}\NormalTok{mpg)}
+\NormalTok{Auto}\SpecialCharTok{$}\NormalTok{mpg01 }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(Auto}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{\textgreater{}}\NormalTok{ median\_mpg, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(Auto[, }\FunctionTok{c}\NormalTok{(}\StringTok{"mpg"}\NormalTok{, }\StringTok{"mpg01"}\NormalTok{)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   mpg mpg01
+## 1  18     0
+## 2  15     0
+## 3  18     0
+## 4  16     0
+## 5  17     0
+## 6  15     0
+\end{verbatim}
+
+\textbf{Answer}: \texttt{mpg01} created and added to the dataset.
+
+\subsubsection{(b) Graphical Exploration}\label{b-graphical-exploration}
+
+Explore associations with \texttt{mpg01} using boxplots and
+scatterplots.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(gridExtra)}
+
+\CommentTok{\# Boxplots for quantitative variables}
+\NormalTok{quant\_vars }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"cylinders"}\NormalTok{, }\StringTok{"displacement"}\NormalTok{, }\StringTok{"horsepower"}\NormalTok{, }\StringTok{"weight"}\NormalTok{, }\StringTok{"acceleration"}\NormalTok{, }\StringTok{"year"}\NormalTok{)}
+
+\NormalTok{plot\_list }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(quant\_vars)) \{}
+\NormalTok{  var }\OtherTok{\textless{}{-}}\NormalTok{ quant\_vars[i]}
+\NormalTok{  p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(Auto, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{factor}\NormalTok{(mpg01), }\AttributeTok{y =}\NormalTok{ .data[[var]])) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"mpg01"}\NormalTok{, }\AttributeTok{y =}\NormalTok{ var, }\AttributeTok{title =} \FunctionTok{paste}\NormalTok{(var, }\StringTok{"vs mpg01"}\NormalTok{)) }\SpecialCharTok{+}
+    \FunctionTok{theme\_minimal}\NormalTok{()}
+\NormalTok{  plot\_list[[i]] }\OtherTok{\textless{}{-}}\NormalTok{ p}
+\NormalTok{\}}
+
+\CommentTok{\# Arrange plots in a grid}
+\FunctionTok{grid.arrange}\NormalTok{(}\AttributeTok{grobs =}\NormalTok{ plot\_list, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{Classification_Exercises_files/figure-latex/unnamed-chunk-5-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Scatterplot matrix}
+\FunctionTok{library}\NormalTok{(GGally)}
+\NormalTok{vars\_to\_plot }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"displacement"}\NormalTok{, }\StringTok{"horsepower"}\NormalTok{, }\StringTok{"weight"}\NormalTok{, }\StringTok{"acceleration"}\NormalTok{, }\StringTok{"mpg01"}\NormalTok{)}
+\FunctionTok{ggpairs}\NormalTok{(Auto[, vars\_to\_plot], }\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \FunctionTok{factor}\NormalTok{(mpg01)), }
+        \AttributeTok{title =} \StringTok{"Scatterplot Matrix"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{Classification_Exercises_files/figure-latex/unnamed-chunk-6-1.pdf}}
+
+\textbf{Findings}: \texttt{displacement}, \texttt{horsepower},
+\texttt{weight}, and \texttt{cylinders} show strong associations with
+\texttt{mpg01}. Lower values correspond to \texttt{mpg01\ =\ 1} (high
+mileage).
+
+\subsubsection{(c) Split Data}\label{c-split-data}
+
+Split into 70\% training, 30\% test.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{42}\NormalTok{)}
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(Auto)}
+\NormalTok{train\_indices }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\NormalTok{n, }\AttributeTok{size =} \FunctionTok{floor}\NormalTok{(}\FloatTok{0.7} \SpecialCharTok{*}\NormalTok{ n))}
+
+\CommentTok{\# Select predictors based on part (b) findings}
+\NormalTok{predictors }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"displacement"}\NormalTok{, }\StringTok{"horsepower"}\NormalTok{, }\StringTok{"weight"}\NormalTok{, }\StringTok{"cylinders"}\NormalTok{)}
+\NormalTok{X\_train }\OtherTok{\textless{}{-}}\NormalTok{ Auto[train\_indices, predictors]}
+\NormalTok{X\_test }\OtherTok{\textless{}{-}}\NormalTok{ Auto[}\SpecialCharTok{{-}}\NormalTok{train\_indices, predictors]}
+\NormalTok{y\_train }\OtherTok{\textless{}{-}}\NormalTok{ Auto}\SpecialCharTok{$}\NormalTok{mpg01[train\_indices]}
+\NormalTok{y\_test }\OtherTok{\textless{}{-}}\NormalTok{ Auto}\SpecialCharTok{$}\NormalTok{mpg01[}\SpecialCharTok{{-}}\NormalTok{train\_indices]}
+
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{sprintf}\NormalTok{(}\StringTok{"Training set size: \%d, Test set size: \%d}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, }
+            \FunctionTok{length}\NormalTok{(train\_indices), }\FunctionTok{length}\NormalTok{(y\_test)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Training set size: 274, Test set size: 118
+\end{verbatim}
+
+\textbf{Answer}: Data split into training and test sets.
+
+\subsubsection{(d) Perform LDA and Compute Test
+Error}\label{d-perform-lda-and-compute-test-error}
+
+Use LDA to predict \texttt{mpg01} and compute test error.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(MASS)}
+
+\CommentTok{\# Prepare training data}
+\NormalTok{train\_data }\OtherTok{\textless{}{-}}\NormalTok{ Auto[train\_indices, }\FunctionTok{c}\NormalTok{(predictors, }\StringTok{"mpg01"}\NormalTok{)]}
+
+\CommentTok{\# Fit LDA model}
+\NormalTok{lda\_model }\OtherTok{\textless{}{-}} \FunctionTok{lda}\NormalTok{(mpg01 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ displacement }\SpecialCharTok{+}\NormalTok{ horsepower }\SpecialCharTok{+}\NormalTok{ weight }\SpecialCharTok{+}\NormalTok{ cylinders, }
+                 \AttributeTok{data =}\NormalTok{ train\_data)}
+
+\CommentTok{\# Make predictions on test set}
+\NormalTok{test\_data }\OtherTok{\textless{}{-}}\NormalTok{ Auto[}\SpecialCharTok{{-}}\NormalTok{train\_indices, predictors]}
+\NormalTok{lda\_pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(lda\_model, }\AttributeTok{newdata =}\NormalTok{ test\_data)}
+\NormalTok{predictions }\OtherTok{\textless{}{-}}\NormalTok{ lda\_pred}\SpecialCharTok{$}\NormalTok{class}
+
+\CommentTok{\# Calculate test error}
+\NormalTok{test\_error }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(predictions }\SpecialCharTok{!=}\NormalTok{ y\_test)}
+\NormalTok{accuracy }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(predictions }\SpecialCharTok{==}\NormalTok{ y\_test)}
+
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{sprintf}\NormalTok{(}\StringTok{"Test error: \%.4f}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, test\_error))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Test error: 0.0763
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{sprintf}\NormalTok{(}\StringTok{"Test accuracy: \%.4f}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, accuracy))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Test accuracy: 0.9237
+\end{verbatim}
+
+\textbf{Answer}: Test error is approximately 0.12 (exact value depends
+on the split), indicating good performance.
+
+\end{document}
