@@ -1,8 +1,0 @@
-\contentsline {section}{Chapter 2 - Exercise Questions}{1}{section*.2}%
-\contentsline {subsection}{Exercise 4}{1}{section*.3}%
-\contentsline {subsection}{Exercise 7}{2}{section*.4}%
-\contentsline {section}{Chapter 3 - Exercise Questions}{3}{section*.5}%
-\contentsline {subsection}{Exercise 4: The Curse of Dimensionality}{3}{section*.6}%
-\contentsline {subsection}{Exercise 9: Odds}{5}{section*.7}%
-\contentsline {subsection}{Exercise 14: Predicting Gas Mileage}{5}{section*.8}%
-\contentsline {subsection}{Summary of Results}{13}{section*.9}%
