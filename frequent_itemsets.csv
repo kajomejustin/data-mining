@@ -1,0 +1,11 @@
+support,itemsets
+0.4,frozenset({'citrus fruit'})
+0.4,"frozenset({'coffee', 'yogurt'})"
+0.4,"frozenset({'ready soups', 'semi-finished bread', 'margarine'})"
+0.4,"frozenset({'coffee', 'tropical fruit', 'yogurt'})"
+0.4,"frozenset({'ready soups', 'semi-finished bread', 'citrus fruit'})"
+0.4,"frozenset({'semi-finished bread', 'citrus fruit', 'margarine'})"
+0.4,"frozenset({'ready soups', 'citrus fruit', 'margarine'})"
+0.4,"frozenset({'yogurt', 'tropical fruit'})"
+0.4,"frozenset({'ready soups', 'semi-finished bread'})"
+0.4,"frozenset({'semi-finished bread', 'margarine'})"
