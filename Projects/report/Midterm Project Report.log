@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.9)  4 JUL 2025 09:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.9)  4 JUL 2025 09:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./midterm.tex
-(midterm.tex
+**"./Midterm Project Report.tex"
+(Midterm Project Report.tex
 LaTeX2e <2025-06-01>
 L3 programming layer <2025-05-26>
 (C:\Program Files\MiKTeX\tex/latex/base\article.cls
@@ -373,8 +373,9 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 (C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-04-14 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count320
-) (midterm.aux)
-\openout1 = `midterm.aux'.
+)
+(Midterm Project Report.aux)
+\openout1 = `"Midterm Project Report.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
@@ -455,10 +456,10 @@ Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring OFF on input line 18.
- (midterm.out)
-(midterm.out)
+
+(Midterm Project Report.out) (Midterm Project Report.out)
 \@outlinefile=\write3
-\openout3 = `midterm.out'.
+\openout3 = `"Midterm Project Report.out"'.
 
 <../figures/auca.png, id=67, 298.11375pt x 56.21pt>
 File: ../figures/auca.png Graphic file (type png)
@@ -470,9 +471,10 @@ Package pdftex.def Info: ../figures/auca.png  used on input line 24.
 [1
 
 {C:/Users/admin/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <../figures/a
-uca.png>] (midterm.toc
+uca.png>] (Midterm Project Report.toc
 LaTeX Font Info:    Trying to load font information for U+msa on input line 3.
- (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
+
+(C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
@@ -481,7 +483,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ))
 \tf@toc=\write4
-\openout4 = `midterm.toc'.
+\openout4 = `"Midterm Project Report.toc"'.
 
 
 
@@ -585,22 +587,23 @@ abank . worldbank . org / source /
 
 [11 <../figures/performance_comparison.png>]
 
-[12] (midterm.aux)
+[12] (Midterm Project Report.aux)
  ***********
 LaTeX2e <2025-06-01>
 L3 programming layer <2025-05-26>
  ***********
-Package rerunfilecheck Info: File `midterm.out' has not changed.
+Package rerunfilecheck Info: File `"Midterm Project Report".out' has not change
+d.
 (rerunfilecheck)             Checksum: 7954B4335279DF0E89D032D4AB695820;2451.
  ) 
 Here is how much of TeX's memory you used:
- 12570 strings out of 468225
- 198237 string characters out of 5443041
- 618714 words of memory out of 5000000
- 40893 multiletter control sequences out of 15000+600000
+ 12573 strings out of 468225
+ 198736 string characters out of 5443041
+ 618748 words of memory out of 5000000
+ 40896 multiletter control sequences out of 15000+600000
  635396 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,9n,79p,984b,558s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,9n,79p,1001b,558s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\admin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1200.pk> <C:\Users\admin\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tcrm1095.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pf
@@ -610,7 +613,7 @@ X/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1
 /public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12
 .pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on midterm.pdf (13 pages, 1504089 bytes).
+Output written on "Midterm Project Report.pdf" (13 pages, 1504299 bytes).
 PDF statistics:
  297 PDF objects out of 1000 (max. 8388607)
  51 named destinations out of 1000 (max. 500000)

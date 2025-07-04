@@ -1,5 +1,5 @@
 Model,Primary Metric,Metric Type
 Polynomial Regression,0.6161430684722655,R²
-Simplified DNN,-0.14463271016157786,R²
+Simplified DNN,0.3980786473814053,R²
 Random Forest Classifier,0.8461538461538461,Accuracy
 KMeans Clustering,0.29027166701211765,Silhouette Score
